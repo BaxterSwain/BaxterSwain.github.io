@@ -1,0 +1,335 @@
+/* PageStyles.css */
+.page {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: radial-gradient(ellipse at top, #111 0%, #0a0a0a 100%);
+  color: #eaeaea;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.about-section h2 {
+  font-size: 2.8rem;
+  color: #00ffe7;
+  margin-bottom: 1rem;
+  animation: floatGlow 2s ease-in-out infinite;
+}
+
+.glow {
+  text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7;
+}
+
+.profile-img {
+  width: 160px;
+  border-radius: 50%;
+  border: 3px solid #00ffe7;
+  margin: 2rem 0;
+  box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+  transition: transform 0.4s ease;
+}
+.profile-img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.bio {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #bbb;
+}
+
+.quote {
+  font-style: italic;
+  color: #888;
+  margin-top: 1.5rem;
+}
+
+.typewriter {
+  font-family: 'Courier New', monospace;
+  color: #7fffd4;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #00ffe7;
+  width: 0;
+  animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 52ch; }  /* Increase to fit your full sentence */
+}
+
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes floatGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px #00ffe7;
+  }
+  50% {
+    text-shadow: 0 0 20px #00ffe7;
+  }
+}
+.info-section {
+  display: flex;
+  justify-content: center;
+  gap: 3rem 4rem;        /* Horizontal & vertical gap */
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+
+.info-box {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 280px;
+  box-shadow: 0 0 20px rgba(0, 255, 231, 0.1);
+  transition: transform 0.3s;
+}
+.info-box:hover {
+  transform: translateY(-5px);
+}
+.info-box h3 {
+  color: #00ffe7;
+  margin-bottom: 1rem;
+}
+.info-box ul {
+  list-style: none;
+  padding: 0;
+  color: #ccc;
+}
+
+.carousel-section {
+  margin-top: 4rem;
+}
+.carousel-slide {
+  background: #181818;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 231, 0.05);
+}
+.carousel-slide h4 {
+  margin-bottom: 0.5rem;
+  color: #00ffe7;
+}
+.custom-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: rgba(15, 15, 15, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #222;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeInNav 1s ease-in-out;
+}
+
+.custom-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #00ffe7;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 0.3rem 0;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 0%;
+  background: #00ffe7;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #7fffd4;
+  transform: translateY(-1px);
+}
+
+@keyframes fadeInNav {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }  
+}
+/* Particle canvas underlay */
+#tsparticles {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+}
+/* Flip Card Layout */
+/* Flip Card Clickable Layout */
+.flip-card {
+  background: transparent;
+  width: 250px;
+  height: 180px;
+  perspective: 1000px;
+  margin: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  box-shadow: 0 0 15px rgba(0, 255, 231, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  backface-visibility: hidden;
+}
+
+.flip-card-front h3 {
+  font-size: 1.3rem;
+  color: #00ffe7;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  color: #ccc;
+}
+
+.flip-card-back ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+/* Optional card variants for color styling */
+.flip-one { border-color: #00ffe7; }
+.flip-two { border-color: #ff6b6b; }
+.flip-three { border-color: #ffd93d; }
+.flip-four { border-color: #82f9d0; }
+
+/* Contact Section */
+/* Contact Section Styling */
+.contact-section {
+  margin-top: 5rem;
+  padding: 4rem 1rem;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #121212 0%, #0a0a0a 100%);
+  border-top: 1px solid #222;
+  box-shadow: inset 0 0 40px rgba(0, 255, 231, 0.05);
+}
+
+.contact-section h3 {
+  font-size: 2rem;
+  color: #00ffe7;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px #00ffe7;
+}
+
+.contact-section p {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.contact-links a {
+  color: #00ffe7;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid #00ffe7;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 255, 231, 0.1);
+}
+
+.contact-links a:hover {
+  background: #00ffe7;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 231, 0.3);
+}
+
+.contact-quote {
+  color: #888;
+  font-style: italic;
+  margin-top: 2rem;
+}
+/* Typing animation for contact quote */
+.typewriter-quote {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  border-right: 2px solid #00ffe7;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typingQuote 4s steps(40, end) forwards, blinkCursor 0.75s step-end infinite;
+  max-width: 100%;
+  font-size: 1.1rem;
+  color: #00ffe7;
+}
+
+@keyframes typingQuote {
+  from { width: 0; }
+  to { width: 42ch; } /* adjust to length of your quote */
+}
+
+@keyframes blinkCursor {
+  50% { border-color: transparent; }
+}
+.contact-wave {
+  display: block;
+  margin-top: -5px;
+  width: 100%;
+  height: 120px;
+}

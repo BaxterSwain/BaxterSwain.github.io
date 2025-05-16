@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Baxter Swain</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #eee;
+    }
+    header {
+      background: #1c1c1c;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      color: #00ffe7;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #aaa;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00ffe7;
+    }
+    .projects {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .projects h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #00ffe7;
+    }
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid #00ffe7;
+      color: #00ffe7;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #00ffe7;
+      color: #000;
+    }
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: #1f1f1f;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 255, 231, 0.1);
+      transition: all 0.4s ease;
+      opacity: 1;
+    }
+    .project-card.fade-out {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .project-card.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .project-card iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+    .project-info h3 {
+      color: #00ffe7;
+      margin-bottom: 1rem;
+    }
+    .project-info p {
+      color: #bbb;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+    }
+    footer {
+      background: #1c1c1c;
+      text-align: center;
+      padding: 1rem;
+      color: #666;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Baxter Swain</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="projects">
+    <h2 data-aos="fade-up">Featured Projects</h2>
+
+    <div class="filter-buttons" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="video">Video</button>
+      <button class="filter-btn" data-filter="game">Game</button>
+    </div>
+
+    <div class="project-card" data-category="web" data-aos="fade-right">
+      <div>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+      </div>
+      <div class="project-info">
+        <h3>Animated Landing Page</h3>
+        <p>This project showcases a fully responsive landing page with scroll-based animations and interactive features, built using HTML, CSS, JavaScript, and the AOS library for stunning transitions.</p>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="video" data-aos="fade-left">
+      <div class="project-info">
+        <h3>Cybersecurity Explainer</h3>
+        <p>A short educational video breaking down common cybersecurity threats and how to defend against them. Edited with After Effects and embedded for web viewing via YouTube.</p>
+      </div>
+      <div>
+        <iframe src="https://www.youtube.com/embed/5b2QvqtZLSs" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="game" data-aos="zoom-in">
+      <div>
+        <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" allowfullscreen></iframe>
+      </div>
+      <div class="project-info">
+        <h3>Mini Game: Memory Trainer</h3>
+        <p>A Unity/C# memory card game built as part of an interactive brain-training toolkit. The gameplay demo highlights its use in cognitive health applications for older adults.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Baxter Swain. All rights reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const category = button.getAttribute("data-filter");
+
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        projectCards.forEach(card => {
+          card.classList.add("fade-out");
+          setTimeout(() => {
+            const cardCategory = card.getAttribute("data-category");
+            if (category === "all" || category === cardCategory) {
+              card.style.display = "grid";
+              card.classList.remove("fade-out");
+              card.classList.add("fade-in");
+            } else {
+              card.style.display = "none";
+              card.classList.remove("fade-in");
+            }
+          }, 300);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
